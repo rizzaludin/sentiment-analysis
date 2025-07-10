@@ -73,7 +73,7 @@ export async function getSentimentsForBatch(comments: string[]): Promise<Sentime
     }
     return sentimentData.results;
   } catch (error) {
-    console.error('Error during sentiment analysis batch:', error);
+    console.log('Error during sentiment analysis batch:', error);
     // Return a neutral result for each comment in the batch on failure
     return comments.map(() => ({ sentiment: 'neutral', polarity: 0 }));
   }
@@ -85,7 +85,7 @@ export async function getInsight(sentimentData: string): Promise<string> {
     const result = await analyzeSentimentInsights({ sentimentData });
     return result.insight;
   } catch (error) {
-    console.error('Error getting insight:', error);
+    console.log('Error getting insight:', error);
     return 'Could not generate an insight at this time. Please try again later.';
   }
 }

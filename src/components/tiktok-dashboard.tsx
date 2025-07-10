@@ -47,7 +47,7 @@ export function TiktokDashboard() {
         skipEmptyLines: true,
         complete: (results) => {
           if (results.errors.length > 0) {
-            console.error('CSV Parsing Errors:', results.errors);
+            console.log('CSV Parsing Errors:', results.errors);
             toast({
               variant: 'destructive',
               title: 'CSV Parsing Error',
@@ -61,7 +61,7 @@ export function TiktokDashboard() {
           setHeaders(results.meta.fields || []);
         },
         error: (err) => {
-          console.error('PapaParse Error:', err);
+          console.log('PapaParse Error:', err);
           setStage('error');
           setError('A critical error occurred while parsing the file.');
         },
@@ -115,7 +115,7 @@ export function TiktokDashboard() {
         setAnalyzedComments(allResults);
         setProgress(((i + BATCH_SIZE) / uniqueComments.length) * 100);
       } catch (e) {
-        console.error('Error processing batch:', e);
+        console.log('Error processing batch:', e);
         toast({
           variant: 'destructive',
           title: 'Analysis Failed',
